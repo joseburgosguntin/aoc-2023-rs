@@ -47,15 +47,10 @@ fn parse_num(i: &str) -> IResult<&str, u32> {
     alt((parse_word, parse_single_digit))(i)
 }
 
-fn my_combinator<O>(f: impl Fn(&str) -> IResult<&str, O>, s: &str) -> Vec<O> {
-    let mut vec = Vec::<O>::new();
-    for i in 0..s.len() {
-        match f(&s[i..]) {
-            Ok((_, n)) => vec.push(n),
-            Err(_) => continue,
-        }
-    }
-    vec
+fn my_combinator<O>(p: impl Fn(&str) -> IResult<&str, O>, i: &str) -> Vec<O> {
+    (0..i.len())
+        .filter_map(|start| p(&i[start..]).map(|(_, o)| o).ok())
+        .collect()
 }
 
 fn solution(s: &str) -> u32 {
