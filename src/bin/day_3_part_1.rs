@@ -52,7 +52,7 @@ fn solution(s: &str) -> u32 {
             }
         }
     }
-    return res;
+    res
 }
 
 #[test]

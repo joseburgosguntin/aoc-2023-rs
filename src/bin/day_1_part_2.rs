@@ -35,7 +35,7 @@ fn parse_word(i: &str) -> IResult<&str, u32> {
             tag("eight"),
             tag("nine"),
         )),
-        |word| word_to_u32(word),
+        word_to_u32,
     )(i)
 }
 

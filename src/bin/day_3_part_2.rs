@@ -26,7 +26,7 @@ fn solution(s: &str) -> u32 {
                         (-1, 0),
                         (-1, -1),
                     ];
-                    if let None = gear {
+                    if gear.is_none() {
                         for (x, y) in arr {
                             let coord = match (i as i32 + x, j as i32 + y) {
                                 (i @ 0.., j @ 0..) => Some((i as usize, j as usize)),

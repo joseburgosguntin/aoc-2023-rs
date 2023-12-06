@@ -6,12 +6,12 @@ fn main() {
 fn solution(s: &str) -> u32 {
     let mut res = 0;
     for line in s.split('\n') {
-        let mut two = line.chars().filter(|x| x.is_digit(10));
+        let mut two = line.chars().filter(|x| x.is_ascii_digit());
         let first = two.next().and_then(|c| c.to_digit(10)).unwrap_or(0);
         res += first * 10;
         res += two.last().and_then(|c| c.to_digit(10)).unwrap_or(first);
     }
-    return res;
+    res
 }
 
 #[test]

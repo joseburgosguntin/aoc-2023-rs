@@ -29,7 +29,7 @@ impl<'a> RangesMap<'a> {
                 return n - src + dst;
             }
         }
-        return n;
+        n
     }
 }
 
